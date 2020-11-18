@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import 'firebase/auth'
 import 'firebase/app'
 
-var firebaseConfig = {
+export const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTHDOMAIN,
     databaseURL: process.env.REACT_APP_BASEURL,
@@ -15,13 +15,15 @@ var firebaseConfig = {
 // Initialize Firebase
 export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth()
+export const googleProvider  = new firebase.auth.GoogleAuthProvider();
 firebase.analytics();
 
-export const signInWithGoogle = () => {
-    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+
+export const  registerWithGoogle = async () =>  {
+    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
         .then(function() {
             var provider = new firebase.auth.GoogleAuthProvider();
-            return firebase.auth().signInWithPopup(provider);
+            return firebase.auth();
         })
         .catch(function(error) {
             // Handle Errors here.
@@ -32,6 +34,4 @@ export const signInWithGoogle = () => {
 
 };
 
-export default {
-    firebaseConfig,
-}
+
