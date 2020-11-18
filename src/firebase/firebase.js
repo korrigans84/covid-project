@@ -16,22 +16,9 @@ export const firebaseConfig = {
 export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth()
 export const googleProvider  = new firebase.auth.GoogleAuthProvider();
+export const database = firebase.database()
 firebase.analytics();
 
 
-export const  registerWithGoogle = async () =>  {
-    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-        .then(function() {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            return firebase.auth();
-        })
-        .catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
-
-};
 
 

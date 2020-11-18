@@ -3,7 +3,7 @@ import {AuthContext} from "../provider/AuthProvider";
 import {auth} from "../firebase/firebase";
 import {useHistory} from "react-router";
 
-//This page is accessible only if the user is connected
+//This page is accessible only if the user is connected (managed by the router
 const Profile = () => {
     const { user } = useContext(AuthContext)
 

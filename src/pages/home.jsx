@@ -1,16 +1,15 @@
 import React from 'react'
-import {app} from "../firebase/firebase";
-
-
+import {auth} from "../firebase/firebase";
+import {Button} from "semantic-ui-react";
 
 const Home = () => {
     const handleClick = () => {
-        app.auth().signOut();
+        auth.signOut();
     }
-    return <>
-    <h1>Home</h1>
+    return <div className="container">
 
-    <button className="btn btn-primary" onClick={handleClick}> Sign out</button>
-        </>
+            <h1 className="text-primary">Home</h1>
+            <Button primary onClick={handleClick}> Sign out</Button>
+        </div>
 }
 export default Home;

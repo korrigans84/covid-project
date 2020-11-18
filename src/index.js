@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/style.css';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Home from "./pages/home";
 import Countries from "./pages/countries";
@@ -10,12 +9,16 @@ import AuthProvider from "./provider/AuthProvider";
 import PrivateRoute from "./routing/privateRoute";
 import Profile from "./pages/profile";
 
+import './assets/styles';
+import {Header} from "./components/header";
+
 
 
 ReactDOM.render(
   <React.StrictMode>
       <AuthProvider>
-        <Router>
+        <Router >
+            <Route path="/*" component={Header} />
             <Route exact path="/" component={Home} />
             <Route exact path="/countries" component={Countries} />
             <Route exact path="/login" component={Login} />
